@@ -19,4 +19,5 @@ There is not as much to be done, however, for the first thing, I want you to set
 This will trick server into ticking only 2 chunks in range. I'll explain why we do this later on.
 # Spigot.yml, Paper.yml, Bukkit.yml
 We have created optimized settings for each of these, including custom messages. You can change these. Just drag&drop upload it to your server to see results.
+In regards to view-distance trick, we have set no-tick-view-distance in paper.yml, which means you will see 7 chunks render, but only 2 chunks will be ticked.
 
