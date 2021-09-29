@@ -17,7 +17,6 @@ There are many things you can do to increase performance of your server. We'll t
 # Server.properties
 There is not as much to be done, however, for the first thing, I want you to set view-distance to value =2
 This will trick server into ticking only 2 chunks in range. I'll explain why we do this later on.
-# Spigot.yml
-    
-Those are optimized settings for spigot server! It should increase your performance, however, we need Paper for it to work!
+# Spigot.ymy, Paper.yml, Bukkit.yml
+We have created optimized settings for each of these, including custom messages. You can change these. Just drag&drop upload it to your server to see results.
 
