@@ -1,0 +1,42 @@
+# This is the main configuration file for Bukkit.
+# As you can see, there's actually not that much to configure without any plugins.
+# For a reference for any variable inside this file, check out the Bukkit Wiki at
+# https://www.spigotmc.org/go/bukkit-yml
+# 
+# If you need help on this file, feel free to join us on irc or leave a message
+# on the forums asking for advice.
+# 
+# IRC: #spigot @ irc.spi.gt
+#    (If this means nothing to you, just go to https://www.spigotmc.org/go/irc )
+# Forums: https://www.spigotmc.org/
+# Bug tracker: https://www.spigotmc.org/go/bugs
+
+
+settings:
+  minimum-api: none
+  allow-end: true
+  warn-on-overload: true
+  permissions-file: permissions.yml
+  update-folder: update
+  plugin-profiling: false
+  connection-throttle: 4000
+  query-plugins: true
+  deprecated-verbose: default
+  shutdown-message: Usaď se pohodlně, server se restartuje.
+spawn-limits:
+  water-ambient: 20
+  monsters: 30
+  animals: 8
+  water-animals: 8
+  ambient: 1
+chunk-gc:
+  period-in-ticks: 200
+  load-threshold: 0
+ticks-per:
+  water-spawns: 1
+  water-ambient-spawns: 1
+  ambient-spawns: 1
+  animal-spawns: 400
+  monster-spawns: 2
+  autosave: 6000
+aliases: now-in-commands.yml
