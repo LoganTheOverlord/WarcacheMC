@@ -1,0 +1,14 @@
+on chat:
+    if player has permission "group.d":
+        set {_g} to "&7&l[Hráč&]"
+        set {_c} to "&r"
+    if player has permission "group.v":
+        set {_g} to "&7&l[&e&lVIP&7&l]"
+        set {_c} to "&e"
+    if player has permission "group.h":
+        set {_g} to "&7&l[&a&lHelper&7&l]"
+        set {_c} to "&a"
+    if player has permission "group.o":
+        set {_g} to "&7&l[&e&lMajitel&7&l]"
+        set {_c} to "&e"
+    set chat format to "%{_g}% %{_c}%%player%&r: %{_c}%%message%"
