@@ -1,1 +1,3 @@
 
+function sound(player: player, sound: text, volume: number):
+    play sound "%{_sound}%" with volume {_volume} and pitch 1 at location of {_player} for {_player}
