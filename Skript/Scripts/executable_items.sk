@@ -1,22 +1,22 @@
 command /addexec <text>:
     trigger:
-        if has permission "exec.create":
-            set {item::%player's tool%} to arg-1
+        if player is op:
+            set {item::%1 of player's tool%} to arg-1
             send "&e&lEXEC &f> Command &e&n%arg-1% was bound to item %name of player's tool%"
 
 on click:
-    if {item::%player's tool%} is set:
-        set {_c} to {item::%player's tool%}
+    if {item::%1 of player's tool%} is set:
+        set {_c} to {item::%1 of player's tool%}
         replace all "%%user%%" with "%player%" in {_c}
         execute console command "%{_c}%"
         remove 1 of player's tool from player
 
 command /rename <text>:
     trigger:
-        if has permission "exec.create":
+        if player is op:
             set name of player's tool to colored arg-1
 
 command /lore <number> <text>:
     trigger:
-        if has permission "exec.create":
+        if player is op:
             set line arg-1 of lore of tool of player to colored arg-2
