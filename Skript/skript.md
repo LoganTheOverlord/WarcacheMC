@@ -9,3 +9,7 @@ You can enable support for skript using expansion listed here. Download it, and 
 
 # Example scripts
 You can browse many utility scripts here in "Scripts" folder!
+
+# Addons
+Skript is heavily expendable using addons!
+Some of notable ones: SkQuery, SkMirror, Skellett, SkRayFall, SharpSk
