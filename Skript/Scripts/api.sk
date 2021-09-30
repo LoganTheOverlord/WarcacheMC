@@ -10,3 +10,8 @@ function sendToSpawn(player: player):
 function progress(num1: number, num2: number) :: number:
     set {_r} to {_num1} / {_num2} * 100
     return {_r}
+
+function broadcastToPerm(message: text, perm: text):
+    loop all players:
+        if loop-player has permission "%{_perm}%":
+            send "%{_text}%" to loop-player
