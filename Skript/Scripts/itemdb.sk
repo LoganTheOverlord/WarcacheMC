@@ -1,0 +1,59 @@
+command /additem <text>:
+    permission: custom.additem
+    trigger:
+        set {itemdb::%arg-1%} to player's tool
+        send "&e&lItemDB &f> You have set item '&e&n%arg-1%&f' to '%name of player's tool%&f'!"
+
+command /addblockdrop <text> <number> <text>:
+    permission: custom.additem
+    usage: /addblockdrop <item> <block> <chance>
+    trigger:
+        add arg-2 to {itemdb::%arg-1%::dropc::*}
+        add arg-3 to  {itemdb::%arg-1%::dropb::*}
+        send "&e&lItemDB &f> You have set item '&e&n%arg-1%&f' chance to drop from block '&e&n%arg-3%&f' to '&e&n%arg-2%&e&n%%&f'!"
+
+command /addmobdrop <text> <number> <text>:
+    permission: custom.additem
+    usage: /addblockdrop <item> <block> <chance>
+    trigger:
+        add arg-2 to {itemdb::%arg-1%::dropmc::*}
+        add arg-3 to  {itemdb::%arg-1%::dropm::*}
+        send "&e&lItemDB &f> You have set item '&e&n%arg-1%&f' chance to drop from mob '&e&n%arg-3%&f' to '&e&n%arg-2%&e&n%%&f'!"
+
+command /clearblockdrops <text>:
+    permission: custom.additem
+    usage: /clearblockdrops <item>
+    trigger:
+        clear {itemdb::%arg-1%::dropc::*}
+        clear {itemdb::%arg-1%::dropb::*}
+        send "&e&lItemDB &f> You have cleared block drops for item '&e&n%arg-1%&f'!"
+
+command /clearmobdrops <text>:
+    permission: custom.additem
+    usage: /clearblockdrops <item>
+    trigger:
+        clear {itemdb::%arg-1%::dropmc::*}
+        clear {itemdb::%arg-1%::dropm::*}
+        send "&e&lItemDB &f> You have cleared mob drops for item '&e&n%arg-1%&f'!"
+
+command /giveitem <player> <text>:
+    permission: custom.giveitem
+    trigger:
+        give {itemdb::%arg-2%} to arg-1
+        send "&e&lItemDB &f> You have given item '&e&n%arg-2%&f' to '%arg-1%&f'!"
+
+on break:
+    if event is not cancelled:
+        loop {itemdb::*}:
+            loop {itemdb::%loop-index-1%::dropb::*}:
+                if "%type of event-block%" contains "%loop-value-2%":
+                    chance of {itemdb::%loop-index-1%::dropc::%loop-index-2%}%:
+                        drop {itemdb::%loop-index-1%} at event-block
+
+on death:
+    if event is not cancelled:
+        loop {itemdb::*}:
+            loop {itemdb::%loop-index-1%::dropm::*}:
+                if "%type of victim%" contains "%loop-value-2%":
+                    chance of {itemdb::%loop-index-1%::dropmc::%loop-index-2%}%:
+                        drop {itemdb::%loop-index-1%} at victim
