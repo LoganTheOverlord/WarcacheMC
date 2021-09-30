@@ -10,6 +10,7 @@ on click:
         replace all "%%user%%" with "%player%" in {_c}
         execute console command "%{_c}%"
         remove 1 of player's tool from player
+        sound(player, "entity.villager.yes", 1)
 
 command /rename <text>:
     trigger:
