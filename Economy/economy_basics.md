@@ -9,3 +9,4 @@ After you have these two running, economy is done setting up!
 
 # Adding shops
 Essentials has in-built shop capabilities. You will have to enable sign commands ([Sell] [Buy] [Warp], etc).
+For even better integration, we suggest you to use ChestShop. It's very well known plugin, and easy to setup: https://www.spigotmc.org/resources/chestshop.51856/
