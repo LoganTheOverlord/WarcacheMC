@@ -1,0 +1,40 @@
+# This is the main configuration file for Light Spigot.
+# Modify with caution, and make sure you know what you are doing.
+
+knockback:
+  friction: 2.0
+  horizontal: 0.35
+  vertical: 0.35
+  verticalLimit: 0.4
+  extraHorizontal: 0.425
+  extraVertical: 0.085
+spawners:
+  Custom-Spawner-System: true
+  NeedPlayersNearby: true
+  HideSpawnerEntity: true
+  MonsterEggChangesSpawner: false
+  SpawnerParticles: false
+  SpawnRadius: 4
+  PlayerAFKRadius: 10
+  MinimumSpawnTicks: 200
+  MaximumSpawnTicks: 600
+  SpawnCount: 4
+  MaxNearbyEntities: 6
+mob:
+  entityCollisions: false
+  mobAI: true
+world:
+  CatchUpTPS: true
+  LeavesDecayEvent: false
+  WaterInEnd: false
+  AllowSignColoring: true
+  RightClickEditSign: false
+  BetterMending: false
+  TeleportIfOutsideBorder: false
+  EntityLifespan: 0
+theme:
+  mainColor: '&e'
+  secondaryColor: '&f'
+  titleColor: '&6&l'
+  spigotName: Light
+  customVersionCommand: §7This server is running §b§lLight Spigot§7.
