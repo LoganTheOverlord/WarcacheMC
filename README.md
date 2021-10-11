@@ -21,3 +21,10 @@ This will trick server into ticking only 2 chunks in range. I'll explain why we 
 We have created optimized settings for each of these, including custom messages. You can change these. Just drag&drop upload it to your server to see results.
 In regards to view-distance trick, we have set no-tick-view-distance in paper.yml, which means you will see 7 chunks render, but only 2 chunks will be ticked.
 
+# Optimized Server Jars
+- LightSpigot (2nd best): https://www.mc-market.org/resources/17753/
+- SSSpigot (Currently best fork): https://www.mc-market.org/resources/14122/
+- Airplane (Tuinity & Paper Fork): https://github.com/TECHNOVE/Airplane
+- Paper (Average): https://papermc.io/
+- Tuinity (Good enough): https://github.com/Tuinity/Tuinity
+
