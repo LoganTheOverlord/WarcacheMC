@@ -10,33 +10,50 @@
 # Website: https://papermc.io/ 
 # Docs: https://paper.readthedocs.org/ 
 
-use-display-name-in-quit-message: false
 verbose: false
-config-version: 22
+use-display-name-in-quit-message: false
+config-version: 23
 settings:
+  fix-target-selector-tag-completion: true
+  log-player-ip-addresses: false
   lag-compensate-block-breaking: true
   send-full-pos-for-hard-colliding-entities: true
   log-named-entity-deaths: false
   fix-entity-position-desync: true
   load-permissions-yml-before-plugins: true
-  bungee-online-mode: true
+  bungee-online-mode: false
   max-joins-per-tick: 3
   track-plugin-scoreboards: false
   suggest-player-names-when-null-tab-completions: true
   console-has-all-permissions: true
-  region-file-cache-size: 256
+  region-file-cache-size: 128
   incoming-packet-spam-threshold: 1000
   use-alternative-luck-formula: true
-  chunk-tasks-per-tick: 20
+  chunk-tasks-per-tick: 50
   enable-player-collisions: true
-  player-auto-save-rate: -1
-  min-chunk-load-threads: 3
+  player-auto-save-rate: 600
+  min-chunk-load-threads: 8
   max-player-auto-save-per-tick: 6
   save-empty-scoreboard-teams: false
-  velocity-support:
-    enabled: false
-    online-mode: false
-    secret: ''
+  spam-limiter:
+    tab-spam-increment: 1
+    tab-spam-limit: 500
+    recipe-spam-increment: 1
+    recipe-spam-limit: 20
+  book-size:
+    page-max: 256
+    total-multiplier: 0.98
+  console:
+    enable-brigadier-highlighting: true
+    enable-brigadier-completions: true
+  item-validation:
+    display-name: 640
+    loc-name: 640
+    lore-line: 640
+    book:
+      title: 640
+      author: 640
+      page: 1280
   unsupported-settings:
     allow-headless-pistons: false
     allow-permanent-block-break-exploits: false
@@ -51,41 +68,26 @@ settings:
       other items
   watchdog:
     early-warning-every: 5000
-    early-warning-delay: 180000
-  spam-limiter:
-    recipe-spam-increment: 1
-    recipe-spam-limit: 10
-    tab-spam-increment: 1
-    tab-spam-limit: 300
-  book-size:
-    page-max: 2560
-    total-multiplier: 0.98
+    early-warning-delay: 10000
   async-chunks:
-    threads: -1
-  console:
-    enable-brigadier-highlighting: false
-    enable-brigadier-completions: false
-  item-validation:
-    display-name: 4096
-    loc-name: 4096
-    lore-line: 4096
-    book:
-      title: 4096
-      author: 4096
-      page: 8192
+    threads: 12
+  velocity-support:
+    enabled: false
+    online-mode: false
+    secret: ''
   use-display-name-in-quit-message: false
   loggers:
     deobfuscate-stacktraces: true
   chunk-loading:
-    min-load-radius: 2
-    max-concurrent-sends: 2
+    min-load-radius: 1
+    max-concurrent-sends: 6
     autoconfig-send-distance: true
-    target-player-chunk-send-rate: 100.0
-    global-max-chunk-send-rate: -1.0
-    enable-frustum-priority: false
-    global-max-chunk-load-rate: 300.0
+    target-player-chunk-send-rate: 16.0
+    global-max-chunk-send-rate: 64.0
+    enable-frustum-priority: true
+    global-max-chunk-load-rate: 64.0
     player-max-concurrent-loads: 4.0
-    global-max-concurrent-loads: 500.0
+    global-max-concurrent-loads: 96.0
   packet-limiter:
     kick-message: '&cSent too many packets'
     limits:
@@ -97,13 +99,12 @@ settings:
         max-packet-rate: 5.0
         action: DROP
 messages:
-  no-permission: '&cI''m sorry, but you do not have permission to perform this command.
-    Please contact the server administrators if you believe that this is in error.'
+  no-permission: '&cNa provedení tohoto příkazu nemáš dostatečná oprávnění.'
   kick:
-    connection-throttle: Connection throttled! Please wait before reconnecting.
-    flying-player: Flying is not enabled on this server
-    flying-vehicle: Flying is not enabled on this server
     authentication-servers-down: ''
+    connection-throttle: '&cPřipojuješ se příliš rychle! Počkej chvíli.'
+    flying-player: '&cLétání není povolené!'
+    flying-vehicle: '&cLétání není povolené!'
 timings:
   url: https://timings.aikar.co/
   really-enabled: false
@@ -129,7 +130,14 @@ world-settings:
   world_the_end:
     auto-save-interval: 3500
   default:
-    map-item-frame-cursor-update-interval: 10
+    monster-spawn-max-light-level: -1
+    anticheat:
+      obfuscation:
+        items:
+          hide-itemmeta: false
+          hide-durability: false
+    split-overstacked-loot: true
+    map-item-frame-cursor-update-interval: 100
     allow-player-cramming-damage: false
     show-sign-click-command-failure-msgs-to-player: false
     seed-based-feature-search-loads-chunks: false
@@ -137,10 +145,10 @@ world-settings:
     map-item-frame-cursor-limit: 128
     allow-using-signs-inside-spawn-protection: false
     fix-wither-targeting-bug: true
-    update-pathfinding-on-block-update: true
+    update-pathfinding-on-block-update: false
     piglins-guard-chests: true
     ender-dragons-death-always-places-dragon-egg: false
-    only-players-collide: false
+    only-players-collide: true
     allow-vehicle-collisions: true
     max-leash-distance: 10.0
     portal-search-vanilla-dimension-scaling: true
@@ -160,36 +168,36 @@ world-settings:
     use-hopper-check: false
     falling-block-height-nerf: 0
     save-queue-limit-for-auto-save: 50
-    max-chunk-sends-per-tick: 30
-    max-chunk-gens-per-tick: 7
-    queue-light-updates: true
+    max-chunk-sends-per-tick: 16
+    max-chunk-gens-per-tick: 4
+    queue-light-updates: false
     tnt-entity-height-nerf: 0
-    tick-next-tick-list-cap-ignores-redstone: false
+    tick-next-tick-list-cap-ignores-redstone: true
     filter-nbt-data-from-spawn-eggs-and-related: true
-    max-entity-collisions: 3
+    max-entity-collisions: 2
     skip-entity-ticking-in-chunks-scheduled-for-unload: true
-    disable-creeper-lingering-effect: true
+    disable-creeper-lingering-effect: false
     duplicate-uuid-resolver: saferegen
     duplicate-uuid-saferegen-delete-range: 32
     use-vanilla-world-scoreboard-name-coloring: false
     remove-corrupt-tile-entities: true
     fixed-chunk-inhabited-time: 20
     per-player-mob-spawns: true
-    max-auto-save-chunks-per-tick: 10
+    max-auto-save-chunks-per-tick: 16
     seed-based-feature-search: true
     grass-spread-tick-rate: 4
     water-over-lava-flow-speed: 8
     use-faster-eigencraft-redstone: true
-    nether-ceiling-void-damage-height: 0
+    nether-ceiling-void-damage-height: 128
     prevent-moving-into-unloaded-chunks: true
     allow-non-player-entities-on-scoreboards: false
-    portal-search-radius: 128
-    portal-create-radius: 16
+    portal-search-radius: 32
+    portal-create-radius: 32
     armor-stands-do-collision-entity-lookups: false
     keep-spawn-loaded: false
     parrots-are-unaffected-by-player-movement: true
-    keep-spawn-loaded-range: 4
-    container-update-tick-rate: 3
+    keep-spawn-loaded-range: 2
+    container-update-tick-rate: 6
     disable-thunder: false
     skeleton-horse-thunder-spawn-chance: 0.01
     disable-ice-and-snow: false
@@ -200,20 +208,20 @@ world-settings:
     armor-stands-tick: false
     non-player-arrow-despawn-rate: 60
     creative-arrow-despawn-rate: 60
-    entities-target-with-follow-range: false
+    entities-target-with-follow-range: true
     spawner-nerfed-mobs-should-jump: false
     zombies-target-turtle-eggs: true
     zombie-villager-infection-chance: 80
     all-chunks-are-slime-chunks: false
-    mob-spawner-tick-rate: 1
-    light-queue-size: 20
+    mob-spawner-tick-rate: 6
+    light-queue-size: 128
     auto-save-interval: 3000
     enable-treasure-maps: true
     treasure-maps-return-already-discovered: false
     lightning-strike-distance-limit:
-      sound: -1
-      impact-sound: -1
-      flash: -1
+      sound: 100
+      impact-sound: 100
+      flash: 100
     wandering-trader:
       spawn-minute-length: 1200
       spawn-day-length: 24000
@@ -252,8 +260,32 @@ world-settings:
       MinimumTicks: 100
       MaximumTicks: 600
     despawn-ranges:
-      soft: 26
-      hard: 48
+      soft: 32
+      hard: 128
+      axolotls:
+        soft: 32
+        hard: 128
+      monster:
+        soft: 32
+        hard: 128
+      creature:
+        soft: 32
+        hard: 128
+      ambient:
+        soft: 32
+        hard: 128
+      underground_water_creature:
+        soft: 32
+        hard: 128
+      water_creature:
+        soft: 32
+        hard: 128
+      water_ambient:
+        soft: 32
+        hard: 64
+      misc:
+        soft: 32
+        hard: 128
     frosted-ice:
       enabled: true
       delay:
@@ -267,7 +299,7 @@ world-settings:
       refresh-min: 1d
       refresh-max: 2d
     alt-item-despawn-rate:
-      enabled: false
+      enabled: true
       items:
         COBBLESTONE: 200
         DIRT: 200
@@ -275,12 +307,13 @@ world-settings:
         DIORITE: 200
         GRANITE: 200
     hopper:
+      ignore-occluding-blocks: true
       cooldown-when-full: true
       disable-move-event: true
     anti-xray:
       max-block-height: 64
       enabled: false
-      engine-mode: 2
+      engine-mode: 1
       chunk-edge-mode: 2
       max-chunk-section-index: 2
       update-radius: 2
@@ -308,7 +341,7 @@ world-settings:
       - oak_planks
       - stone
     viewdistances:
-      no-tick-view-distance: -1
+      no-tick-view-distance: 5
     squid-spawn-height:
       maximum: 62.0
     generator-settings:
@@ -337,6 +370,12 @@ world-settings:
       animals: -1
       water-animals: -1
       water-ambient: -1
+      axolotls: -1
+      monster: -1
+      creature: -1
+      underground_water_creature: -1
+      water_creature: -1
+      water_ambient: -1
       ambient: -1
     unsupported-settings:
       fix-invulnerable-end-crystal-exploit: true
@@ -349,9 +388,9 @@ world-settings:
     tick-rates:
       sensor:
         villager:
-          secondarypoisensor: 40
+          secondarypoisensor: 85
       behavior:
         villager:
-          validatenearbypoi: -1
+          validatenearbypoi: 85
     feature-seeds:
       generate-random-seeds-for-all: false

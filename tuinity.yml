@@ -9,7 +9,7 @@ packet-limiter:
   limits:
     all:
       interval: 7.0
-      max-packet-rate: 500.0
+      max-packet-rate: 900.0
     PacketPlayInAutoRecipe:
       interval: 4.0
       max-packet-rate: 5.0
@@ -42,6 +42,7 @@ world-settings:
   void: {}
   build: {}
   spawn2: {}
+  empty: {}
 player-chunks:
   target-chunk-send-rate: -35.0
   min-load-radius: 2
@@ -49,4 +50,4 @@ player-chunks:
   max-concurrent-loads: -6.0
   autoconfig-send-distance: true
   enable-mc162253-workaround: true
-  enable-frustum-priority: false
+  enable-frustum-priority: true

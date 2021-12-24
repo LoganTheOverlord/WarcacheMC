@@ -12,7 +12,7 @@ projectile:
 dab:
   enabled: true
   start-distance: 12
-  max-tick-freq: 20
+  max-tick-freq: 12
   activation-dist-mod: 9
   blacklisted-entities: []
 # Options for connecting to Airplane's online utilities
@@ -21,3 +21,5 @@ web-services:
 # Configures Flare, the built-in profiler
 flare:
   url: https://flare.airplane.gg
+sentry:
+  dsn: ''

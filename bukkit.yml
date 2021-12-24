@@ -12,35 +12,33 @@
 # Bug tracker: https://www.spigotmc.org/go/bugs
 
 
-spawn-limits:
-  water-ambient: 8
-  monsters: 40
-  animals: 10
-  ambient: 2
-  water-animals: 8
-chunk-gc:
-  period-in-ticks: 400
-  load-threshold: 200
-ticks-per:
-  water-spawns: 55
-  water-ambient-spawns: 66
-  ambient-spawns: 44
-  animal-spawns: 400
-  monster-spawns: 15
-  autosave: 6000
-aliases: now-in-commands.yml
 settings:
-  auto-updater: false
+  minimum-api: none
   allow-end: true
   warn-on-overload: true
   permissions-file: permissions.yml
   update-folder: update
   plugin-profiling: false
-  connection-throttle: 3000
-  query-plugins: true
+  connection-throttle: 4000
+  query-plugins: false
   deprecated-verbose: default
-  shutdown-message: Server uzavren
-  minimum-api: none
-worlds:
-  world:
-    generator: default
+  shutdown-message: Usaď se pohodlně, server se restartuje.
+spawn-limits:
+  water-underground-creature: 2
+  water-ambient: 4
+  monsters: 20
+  animals: 6
+  ambient: 1
+  water-animals: 5
+chunk-gc:
+  period-in-ticks: 65
+  load-threshold: 300
+ticks-per:
+  water-underground-creature-spawns: 40
+  water-spawns: 55
+  water-ambient-spawns: 66
+  ambient-spawns: 44
+  animal-spawns: 400
+  monster-spawns: 20
+  autosave: 12000
+aliases: now-in-commands.yml

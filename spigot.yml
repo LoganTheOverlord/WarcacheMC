@@ -13,11 +13,12 @@
 config-version: 12
 messages:
   whitelist: You are not whitelisted on this server!
-  unknown-command: Unknown command. Type "/help" for help.
-  server-full: The server is full!
-  outdated-client: Outdated client! Please use {0}
-  outdated-server: Outdated server! I'm still on {0}
-  restart: Server is restarting
+  unknown-command: '&e&lWarcacheMC &f> Neznámý příkaz. Napiš /help pro zobrazení nápovědy.'
+  server-full: Server je plný!
+  outdated-client: Používáš starou verzi klienta!
+  outdated-server: Používáš příliš novou verzi klienta!
+  restart: '&e&lWarcacheMC &f> Server se restartuje, usaď se a dej si něco dobrého,
+    tohle chvíli potrvá.'
 advancements:
   disable-saving: false
   disabled:
@@ -36,14 +37,14 @@ settings:
   moved-wrongly-threshold: 0.0625
   moved-too-quickly-multiplier: 10.0
   log-villager-deaths: false
-  timeout-time: 300
+  timeout-time: 60
   restart-on-crash: true
   restart-script: ./start.sh
-  netty-threads: 8
+  netty-threads: 16
   debug: false
   attribute:
     maxHealth:
-      max: 2048.0
+      max: 2048000.0
     movementSpeed:
       max: 2048.0
     attackDamage:
@@ -52,7 +53,7 @@ settings:
 commands:
   spam-exclusions:
   - /skill
-  silent-commandblock-console: false
+  silent-commandblock-console: true
   replace-commands:
   - setblock
   - summon
@@ -67,11 +68,14 @@ world-settings:
   worldeditregentempworld:
     verbose: false
   default:
+    below-zero-generation-in-existing-chunks: false
+    simulation-distance: 2
+    thunder-chance: 100000
     verbose: false
     hopper-amount: 1
-    chunks-per-tick: 20
+    chunks-per-tick: 40
     hanging-tick-frequency: 1000
-    max-bulk-chunks: 20
+    max-bulk-chunks: 3
     dragon-death-sound-radius: 0
     seed-village: 10387312
     seed-desert: 14357617
@@ -89,23 +93,27 @@ world-settings:
     seed-mansion: 10387319
     seed-fossil: 14357921
     seed-portal: 34222645
-    max-tnt-per-tick: 5
+    max-tnt-per-tick: 2
     enable-zombie-pigmen-portal-spawns: true
     item-despawn-rate: 6000
     hopper-alt-ticking: true
-    view-distance: default
+    view-distance: 5
     wither-spawn-sound-radius: 0
     arrow-despawn-rate: 200
-    trident-despawn-rate: 6000
+    trident-despawn-rate: 2500
     zombie-aggressive-towards-villager: true
-    nerf-spawner-mobs: true
-    end-portal-sound-radius: 0
-    mob-spawn-range: 4
-    max-entity-collisions: 3
+    nerf-spawner-mobs: false
+    end-portal-sound-radius: 500
+    mob-spawn-range: 2
+    max-entity-collisions: 1
     merge-radius:
       exp: 8.0
       item: 5.0
     growth:
+      twistingvines-modifier: 100
+      weepingvines-modifier: 100
+      cavevines-modifier: 100
+      glowberry-modifier: 100
       cactus-modifier: 100
       cane-modifier: 100
       melon-modifier: 100
@@ -123,11 +131,11 @@ world-settings:
       sweetberry-modifier: 350
       kelp-modifier: 100
     entity-activation-range:
-      animals: 20
-      monsters: 20
-      raiders: 48
-      misc: 12
-      water: 8
+      animals: 10
+      monsters: 16
+      raiders: 32
+      misc: 8
+      water: 10
       villagers: 16
       flying-monsters: 16
       villagers-work-immunity-after: 100
@@ -148,8 +156,8 @@ world-settings:
         flying-monsters-every: 200
         flying-monsters-for: 60
     ticks-per:
-      hopper-transfer: 8
-      hopper-check: 8
+      hopper-transfer: 25
+      hopper-check: 40
     hunger:
       jump-walk-exhaustion: 0.05
       jump-sprint-exhaustion: 0.2
@@ -160,12 +168,12 @@ world-settings:
       other-multiplier: 0.0
     max-tick-time:
       tile: 8
-      entity: 20
+      entity: 14
     squid-spawn-range:
       min: 45.0
     entity-tracking-range:
-      players: 48
-      animals: 32
-      monsters: 32
-      misc: 24
-      other: 32
+      players: 32
+      animals: 24
+      monsters: 24
+      misc: 16
+      other: 16

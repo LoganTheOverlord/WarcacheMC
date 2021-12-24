@@ -13,8 +13,8 @@ spawners:
   NeedPlayersNearby: true
   HideSpawnerEntity: true
   MonsterEggChangesSpawner: false
-  SpawnerParticles: false
-  SpawnRadius: 4
+  SpawnerParticles: true
+  SpawnRadius: 2
   PlayerAFKRadius: 10
   MinimumSpawnTicks: 200
   MaximumSpawnTicks: 600
@@ -26,10 +26,10 @@ mob:
 world:
   CatchUpTPS: true
   LeavesDecayEvent: false
-  WaterInEnd: false
+  WaterInEnd: true
   AllowSignColoring: true
-  RightClickEditSign: false
-  BetterMending: false
+  RightClickEditSign: true
+  BetterMending: true
   TeleportIfOutsideBorder: false
   EntityLifespan: 0
 theme:
