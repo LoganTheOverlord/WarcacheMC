@@ -1,0 +1,4 @@
+** How do you fix unloadable plugin due to version? **
+
+First, open plugin jar with winrar, or any other zip tool
+Second, go to plugín.yml, and change api-version to version of your server withouch path, ie. 1.16.5 -> 1.16
