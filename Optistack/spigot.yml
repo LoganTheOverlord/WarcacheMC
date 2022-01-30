@@ -96,7 +96,7 @@ world-settings:
     enable-zombie-pigmen-portal-spawns: true
     item-despawn-rate: 6000
     hopper-alt-ticking: true
-    view-distance: -1
+    view-distance: 2
     wither-spawn-sound-radius: 100
     arrow-despawn-rate: 200
     trident-despawn-rate: 2500
